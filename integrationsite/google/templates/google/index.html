@@ -32,10 +32,11 @@
           <div class="row h-100 align-items-center">
             <div class="col-12 text-center">
                 <h1 class="font-weight-light">Wazoku Integrations</h1>
-                {% if not logged_in %}
-                  <a href="#" class="btn btn-info" role="button">Login with Google</a>
+                {% if user.is_authenticated %}
+                  <p>Hi, {{ request.user.first_name }}</p>
+                  <a href="/logout">Logout</a>
                 {% else %}
-                  <p>You are logged in</p>
+                  <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-info" role="button">Login with Google</a>
                 {% endif %}
             </div>
           </div>
